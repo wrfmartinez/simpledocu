@@ -5,7 +5,7 @@ import { useState } from "react";
 const GenerateCodeSnippet = () => {
   const [code, setCode] = useState("");
   const [language, setLanguage] = useState("");
-  const [highlightedLine, setHighlightedLine] = useState<string>("");
+  const [highlightedLine, setHighlightedLine] = useState<string[]>([]);
 
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
     setCode(e.target.value);
@@ -21,13 +21,14 @@ const GenerateCodeSnippet = () => {
           onChange={handleInput}
           value={code}
         />
+        <label htmlFor="language">Select a Coding Language:</label>
         <select
           name="language"
           onChange={(e) => {
             setLanguage(e.target.value);
           }}
         >
-          <option value="" selected></option>
+          <option value=""></option>
           <option value="html">HTML</option>
           <option value="css">CSS</option>
           <option value="js">JavaScript</option>
@@ -36,6 +37,7 @@ const GenerateCodeSnippet = () => {
           <option value="c">C</option>
           <option value="go">Go</option>
         </select>
+        <label htmlFor="language">Highlight Lines:</label>
         <input
           type="text"
           placeholder="Enter line numbers to highlight i.e 2:5, 7:7"
@@ -45,7 +47,8 @@ const GenerateCodeSnippet = () => {
             const inputValue = e.target.value;
             // Splits input text value when a comma is present for optional code line highlighting skipping
             const inputArray: string[] = inputValue.split(",");
-            setHighlightedLine(inputArray.join(","));
+            const lines = [...inputArray];
+            setHighlightedLine(lines)
           }}
         />
       </div>

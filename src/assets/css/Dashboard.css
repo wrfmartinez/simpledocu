@@ -1,0 +1,11 @@
+#dashboard {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  background-color: #151515;
+}
+
+.dashboard-content {
+  border: 1px solid #303030;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+}
