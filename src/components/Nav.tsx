@@ -1,12 +1,16 @@
-import simpledocuLogo from '/simpledocu.svg'
-import './css/Nav.css';
+import simpledocuLogo from "/simpledocu.svg";
+import "../assets/css/Nav.css";
 
 const Nav = () => {
   return (
     <nav>
       <div className="nav-container">
         <a href="/">
-          <img className="nav-brand" src={simpledocuLogo} alt="Simple Docu logo" />
+          <img
+            className="nav-brand"
+            src={simpledocuLogo}
+            alt="Simple Docu logo"
+          />
         </a>
         <ul className="nav-links">
           <li className="nav-link">
@@ -24,7 +28,7 @@ const Nav = () => {
         <button>Get Started</button>
       </a>
     </nav>
-  )
-}
+  );
+};
 
 export default Nav;

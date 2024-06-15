@@ -1,5 +1,6 @@
 import simpledocuLogo from "/simpledocu.svg";
-import "./css/Home.css";
+import "../assets/css/Home.css";
+import GenerateCodeSnippet from "./GenerateCodeSnippet";
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
         <img src={simpledocuLogo} alt="Simple Docu logo" />
         <p>A tool to write beautiful markdown with code snippet capability</p>
       </header>
+      {/* <GenerateCodeSnippet /> */}
     </main>
   );
 };

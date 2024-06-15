@@ -1,6 +1,6 @@
-import './App.css'
-import Nav from './components/Nav'
-import Home from './components/Home'
+import "./App.css";
+import Nav from "./components/Nav";
+import Home from "./components/Home";
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <Nav />
       <Home />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,4 +1,6 @@
-nav, .nav-container, .nav-links {
+nav,
+.nav-container,
+.nav-links {
   display: flex;
   align-items: center;
   justify-content: space-between;
