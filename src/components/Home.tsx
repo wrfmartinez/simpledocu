@@ -5,11 +5,11 @@ import GenerateCodeSnippet from "./GenerateCodeSnippet";
 const Home = () => {
   return (
     <main>
-      <header className="hero">
+      {/* <header className="hero">
         <img src={simpledocuLogo} alt="Simple Docu logo" />
         <p>A tool to write beautiful markdown with code snippet capability</p>
-      </header>
-      {/* <GenerateCodeSnippet /> */}
+      </header> */}
+      <GenerateCodeSnippet />
     </main>
   );
 };

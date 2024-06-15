@@ -1,7 +1,8 @@
 .code {
   background-color: #151515;
   padding: 40px;
-  border-radius: 50px;
+  border-radius: 10px;
+  height: 406px;
 }
 
 .table-row {

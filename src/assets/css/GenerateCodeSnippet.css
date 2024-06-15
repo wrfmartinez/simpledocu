@@ -1,0 +1,15 @@
+.documentation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  padding-top: 100px;
+}
+
+.code-input {
+  height: 500px;
+}
+
+.user-options {
+  display: flex;
+  flex-direction: column;
+}

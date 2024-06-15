@@ -5,9 +5,10 @@ import "../assets/css/CodeSnippet.css";
 interface IProps {
   code: string,
   language: string
+  highlightedLine: string,
 }
 
-const CodeSnippet = ({ code, language }: IProps) => {
+const CodeSnippet = ({ code, language, highlightedLine }: IProps) => {
   const [state, copyToClipboard] = useCopyToClipboard();
 
   const copyCode = () => {
@@ -17,7 +18,7 @@ const CodeSnippet = ({ code, language }: IProps) => {
 
   return (
     <aside className="code-snippet">
-      <CodeBlock code={code} language={language}>
+      <CodeBlock code={code} language={language} lines={[highlightedLine]}>
         <CodeBlock.Code className="code">
           {({ isLineHighlighted }) => (
             <div
