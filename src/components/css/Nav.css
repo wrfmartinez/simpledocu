@@ -1,0 +1,30 @@
+nav, .nav-container, .nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-container a {
+  display: flex;
+  align-items: center;
+}
+
+.nav-brand {
+  width: 32px;
+}
+
+nav {
+  background-color: #9292927f;
+  backdrop-filter: blur(1rem);
+  border-radius: 20px;
+  padding: 5px 20px;
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: 0 calc(100vw - 95vw);
+}
+
+.nav-links {
+  gap: 20px;
+  list-style: none;
+}
