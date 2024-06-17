@@ -8,12 +8,22 @@ import Dashboard from "./routes/Dashboard.tsx";
 import DashboardModules from "./components/DashboardModules.tsx";
 import Documents from "./routes/Documents.tsx";
 import CreateDocs from "./routes/CreateDocs.tsx";
+import Login from "./routes/Login.tsx";
+import Signup from "./routes/Signup.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "/login",
+    element: <Login />
+  },
+  {
+    path: "/signup",
+    element: <Signup />
   },
   {
     path: "/dashboard",

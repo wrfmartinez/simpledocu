@@ -1,32 +1,38 @@
 import simpledocuLogo from "/simpledocu.svg";
 import "../assets/css/Nav.css";
+import { Link } from "react-router-dom";
 
 const Nav = () => {
   return (
     <nav>
       <div className="nav-container">
-        <a href="/">
+        <Link to="/">
           <img
             className="nav-brand"
             src={simpledocuLogo}
             alt="Simple Docu logo"
           />
-        </a>
+        </Link>
         <ul className="nav-links">
+          {/* <li className="nav-link">
+            <Link to="#">About</Link>
+          </li> */}
+          {/* <li className="nav-link">
+            <Link to="#">Tutorial</Link>
+          </li> */}
           <li className="nav-link">
-            <a href="#">About</a>
-          </li>
-          <li className="nav-link">
-            <a href="#">Tutorial</a>
-          </li>
-          <li className="nav-link">
-            <a href="/dashboard">Dashboard</a>
+            <Link to="/dashboard">Dashboard</Link>
           </li>
         </ul>
       </div>
-      <a href="#">
-        <button>Get Started</button>
-      </a>
+      <div>
+        <Link to="/login">
+          <button style={{ marginRight: "10px" }}>Login</button>
+        </Link>
+        <Link to="/signup">
+          <button>Get Started</button>
+        </Link>
+      </div>
     </nav>
   );
 };
