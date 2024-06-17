@@ -1,7 +1,7 @@
 const DashboardModules = () => {
   return (
     <>
-      <div>Hello, William 👋🏽</div>
+      <h2>Hello, User 👋🏽</h2>
     </>
   )
 }

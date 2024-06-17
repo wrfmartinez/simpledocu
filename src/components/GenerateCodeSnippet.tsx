@@ -48,11 +48,10 @@ const GenerateCodeSnippet = () => {
             // Splits input text value when a comma is present for optional code line highlighting skipping
             const inputArray: string[] = inputValue.split(",");
             const lines = [...inputArray];
-            setHighlightedLine(lines)
+            setHighlightedLine(lines);
           }}
         />
       </div>
-      {/* <button onClick={handleSubmit}>Generate Code Snippet</button> */}
       <CodeSnippet
         code={code}
         language={language}

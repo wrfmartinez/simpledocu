@@ -5,7 +5,8 @@
 }
 
 .dashboard-content {
-  border: 1px solid #303030;
+  border: 1px solid #525252;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
+  padding: 20px 20px;
 }

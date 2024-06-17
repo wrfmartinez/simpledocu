@@ -4,10 +4,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.tsx";
 import "./index.css";
 import ErrorPage from "./error-page.tsx";
-import Dashboard from "./components/Dashboard.tsx";
+import Dashboard from "./routes/Dashboard.tsx";
 import DashboardModules from "./components/DashboardModules.tsx";
-import GenerateCodeSnippet from "./components/GenerateCodeSnippet.tsx";
-import Documents from "./components/Documents.tsx";
+import Documents from "./routes/Documents.tsx";
+import CreateDocs from "./routes/CreateDocs.tsx";
 
 const router = createBrowserRouter([
   {
@@ -20,12 +20,12 @@ const router = createBrowserRouter([
     element: <Dashboard />,
     children: [
       {
-        path: "/dashboard/home",
+        path: "/dashboard",
         element: <DashboardModules />
       },
       {
         path: "/dashboard/create",
-        element: <GenerateCodeSnippet />
+        element: <CreateDocs />
       },
       {
         path: "/dashboard/documents",

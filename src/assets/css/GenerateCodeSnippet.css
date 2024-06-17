@@ -1,12 +1,17 @@
 .documentation {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
   gap: 30px;
-  padding-top: 100px;
 }
 
 .code-input {
   height: 500px;
+}
+
+.code-snippet {
+  padding-bottom: 100px;
 }
 
 .user-options {

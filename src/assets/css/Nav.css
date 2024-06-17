@@ -23,7 +23,7 @@ nav {
   position: fixed;
   left: 0;
   right: 0;
-  margin: 0 calc(100vw - 95vw);
+  margin: 40px calc(100vw - 95vw);
 }
 
 .nav-links {

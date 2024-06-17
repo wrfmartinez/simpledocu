@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import '../assets/css/Dashboard.css';
-import GenerateCodeSnippet from './GenerateCodeSnippet';
-import Sidebar from "./Sidebar";
+import Sidebar from "../components/Sidebar";
 
 const Dashboard = () => {
   return (
