@@ -1,7 +1,7 @@
 // Document.tsx
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getDocument } from '../services/documentsAPI'; // Assuming this is correctly implemented
+import { getDocument } from '../services/documentsAPI';
 import CodeSnippet from './CodeSnippet';
 
 interface Document {
@@ -37,7 +37,9 @@ const Document: React.FC = () => {
   return (
     <div>
       <h1>{document?.title}</h1>
-      <CodeSnippet code={document.snippet} language={document.codeLanguage} highlightedLine={document.highlightedLines?.split(",")} />
+      {document.snippet && document.codeLanguage && document.highlightedLines && (
+        <CodeSnippet code={document.snippet} language={document.codeLanguage} highlightedLine={document.highlightedLines?.split(",")} />
+      )}
       <p>{document?.text}</p>
     </div>
   );
