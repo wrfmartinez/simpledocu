@@ -1,23 +1,15 @@
-import { useState } from "react"
+interface TextBoxProps {
+  onChange: (text: string) => void;
+}
 
-const TextBox = () => {
-  const [ inputText, setInputText ] = useState("");
-
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setInputText(e.target.value);
-  }
-
-  const handleSubmit = () => {
-    // save code snippet & text to the database
-  }
+const TextBox: React.FC<TextBoxProps> = ({ onChange }) => {
+  const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    onChange(event.target.value);
+  };
 
   return (
-    <>
-      <textarea value={inputText} onChange={handleChange}>
-
-      </textarea>
-    </>
-  )
-}
+    <textarea onChange={handleTextChange}></textarea>
+  );
+};
 
 export default TextBox;

@@ -2,13 +2,19 @@ import "../assets/css/GenerateCodeSnippet.css";
 import CodeSnippet from "./CodeSnippet";
 import { useState } from "react";
 
-const GenerateCodeSnippet = () => {
+interface GenerateCodeSnippetProps {
+  onChange: (code: string) => void;
+}
+
+const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({ onChange }) => {
   const [code, setCode] = useState("");
   const [language, setLanguage] = useState("");
   const [highlightedLine, setHighlightedLine] = useState<string[]>([]);
 
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
-    setCode(e.target.value);
+    const newCode = e.target.value;
+    setCode(newCode);
+    onChange(newCode);
   };
 
   return (
@@ -37,17 +43,15 @@ const GenerateCodeSnippet = () => {
           <option value="c">C</option>
           <option value="go">Go</option>
         </select>
-        <label htmlFor="language">Highlight Lines:</label>
+        <label htmlFor="highlightedLine">Highlight Lines:</label>
         <input
           type="text"
           placeholder="Enter line numbers to highlight i.e 2:5, 7:7"
           name="highlightedLine"
-          value={highlightedLine}
+          value={highlightedLine.join(",")}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             const inputValue = e.target.value;
-            // Splits input text value when a comma is present for optional code line highlighting skipping
-            const inputArray: string[] = inputValue.split(",");
-            const lines = [...inputArray];
+            const lines = inputValue.split(",");
             setHighlightedLine(lines);
           }}
         />

@@ -43,9 +43,9 @@ const Document: React.FC = () => {
   return (
     <div>
       <h1>{document?.title}</h1>
-      {document.snippet && document.codeLanguage && document.highlightedLines && (
-        <CodeSnippet code={document.snippet} language={document.codeLanguage} highlightedLine={document.highlightedLines?.split(",")} />
-      )}
+      {
+        <CodeSnippet code={document.snippet ? document.snippet : ""} language={document.codeLanguage ? document.codeLanguage : ""} highlightedLine={document.highlightedLines ? document.highlightedLines?.split(",") : []} />
+      }
       <div dangerouslySetInnerHTML={{__html: clean}}></div>
     </div>
   );
