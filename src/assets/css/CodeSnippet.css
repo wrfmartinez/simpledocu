@@ -1,8 +1,7 @@
 .code {
-  background-color: #151515;
+  background-color: #262626;
   padding: 40px;
   border-radius: 10px;
-  height: 406px;
 }
 
 .table-row {
@@ -16,7 +15,7 @@
 }
 
 .bg-darkgray {
-  background-color: #6c6c6c1f;
+  background-color: #8888881f;
 }
 
 .opacity-60 {

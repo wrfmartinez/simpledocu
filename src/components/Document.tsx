@@ -1,10 +1,10 @@
 // Document.tsx
-import React, { useState, useEffect } from 'react';
-import DOMPurify from 'dompurify';
-import { Remarkable } from 'remarkable';
-import { useParams } from 'react-router-dom';
-import { getDocument } from '../services/documentsAPI';
-import CodeSnippet from './CodeSnippet';
+import React, { useState, useEffect } from "react";
+import DOMPurify from "dompurify";
+import { Remarkable } from "remarkable";
+import { useParams, useNavigate } from "react-router-dom";
+import { getDocument, updateDocument, deleteDocument } from "../services/documentsAPI";
+import CodeSnippet from "./CodeSnippet";
 
 interface Document {
   _id: string;
@@ -17,21 +17,28 @@ interface Document {
 
 const Document: React.FC = () => {
   const { id } = useParams<{ id: any }>();
-  const md = new Remarkable('commonmark');
+  const md = new Remarkable("commonmark");
   const [document, setDocument] = useState<Document | null>(null);
+  const [isDeleted, setIsDeleted] = useState(false);
+  const navigate = useNavigate();
 
   const fetchDocument = async (id: string) => {
     try {
       const data = await getDocument(id);
       setDocument(data);
     } catch (error) {
-      console.error('Error fetching document:', error);
+      console.error("Error fetching document:", error);
     }
   };
 
   useEffect(() => {
     fetchDocument(id);
   }, [id]);
+
+  if (isDeleted) {
+    navigate("/dashboard/documents");
+    return <div>Loading...</div>;
+  }
 
   if (!document) {
     return <div>Loading...</div>;
@@ -40,16 +47,35 @@ const Document: React.FC = () => {
   const markdownTextInHTML = md.render(document?.text);
   const clean = DOMPurify.sanitize(markdownTextInHTML);
 
+  const handleDelete = async () => {
+    try {
+      await deleteDocument(document._id);
+      setIsDeleted(true);
+    } catch (err) {
+      console.error("Could not delete document: ", err);
+    }
+  }
+
   return (
     <div>
-      <h1>{document?.title}</h1>
+      <h2 style={{ borderBottom: "1px solid white" }}>Notes</h2>
       {
-        <CodeSnippet code={document.snippet ? document.snippet : ""} language={document.codeLanguage ? document.codeLanguage : ""} highlightedLine={document.highlightedLines ? document.highlightedLines?.split(",") : []} />
+        <CodeSnippet
+          code={document.snippet ? document.snippet : ""}
+          language={document.codeLanguage ? document.codeLanguage : ""}
+          highlightedLine={
+            document.highlightedLines
+              ? document.highlightedLines?.split(",")
+              : []
+          }
+        />
       }
-      <div dangerouslySetInnerHTML={{__html: clean}}></div>
       <div>
-      <button>Edit</button>
-      <button>Delete</button>
+        <div className="" dangerouslySetInnerHTML={{ __html: clean }}></div>
+      </div>
+      <div style={{display: "flex", gap: "10px"}}>
+        <button>Edit</button>
+        <button onClick={handleDelete}>Delete</button>
       </div>
     </div>
   );

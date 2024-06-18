@@ -10,10 +10,6 @@
   height: 500px;
 }
 
-.code-snippet {
-  padding-bottom: 100px;
-}
-
 .user-options {
   display: flex;
   flex-direction: column;
