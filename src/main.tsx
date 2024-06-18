@@ -16,6 +16,7 @@ import CreateDocs from "./routes/CreateDocs";
 import Login from "./routes/Login";
 import Signup from "./routes/Signup";
 import DashboardModules from "./components/DashboardModules";
+import EditDocs from "./routes/EditDocs";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
         <Route path="create" element={<CreateDocs />} />
         <Route path="documents" element={<Documents />} />
         <Route path="documents/:id" element={<Document />} />
+        <Route path="documents/:id/edit" element={<EditDocs />} />
       </Route>
       <Route path="*" element={<ErrorPage />} />
     </>

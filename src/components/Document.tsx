@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import DOMPurify from "dompurify";
 import { Remarkable } from "remarkable";
 import { useParams, useNavigate } from "react-router-dom";
-import { getDocument, updateDocument, deleteDocument } from "../services/documentsAPI";
+import { getDocument, deleteDocument } from "../services/documentsAPI";
 import CodeSnippet from "./CodeSnippet";
 
 interface Document {
@@ -56,6 +56,10 @@ const Document: React.FC = () => {
     }
   }
 
+  const handleEdit = () => {
+    navigate(`/dashboard/documents/${id}/edit`);
+  };
+
   return (
     <div>
       <h2 style={{ borderBottom: "1px solid white" }}>Notes</h2>
@@ -74,7 +78,7 @@ const Document: React.FC = () => {
         <div className="" dangerouslySetInnerHTML={{ __html: clean }}></div>
       </div>
       <div style={{display: "flex", gap: "10px"}}>
-        <button>Edit</button>
+        <button onClick={handleEdit}>Edit</button>
         <button onClick={handleDelete}>Delete</button>
       </div>
     </div>

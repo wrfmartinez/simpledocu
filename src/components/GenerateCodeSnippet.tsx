@@ -1,12 +1,15 @@
 import "../assets/css/GenerateCodeSnippet.css";
 import CodeSnippet from "./CodeSnippet";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface GenerateCodeSnippetProps {
+  initialCode: string;
+  initialLanguage: string;
+  initialHighlightedLines: string[];
   onChange: (code: string, language: string, highlightedLines: string[]) => void;
 }
 
-const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({ onChange }) => {
+const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({ onChange, initialCode, initialLanguage, initialHighlightedLines }) => {
   const [code, setCode] = useState("");
   const [language, setLanguage] = useState("");
   const [highlightedLine, setHighlightedLine] = useState<string[]>([]);
@@ -29,6 +32,12 @@ const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({ onChange }) =
     setHighlightedLine(lines);
     onChange(code, language, lines);
   };
+
+  useEffect(() => {
+    setCode(initialCode);
+    setLanguage(initialLanguage);
+    setHighlightedLine(initialHighlightedLines);
+  }, [initialCode, initialLanguage, initialHighlightedLines]);
 
   return (
     <section className="documentation">

@@ -1,14 +1,15 @@
 interface TextBoxProps {
   onChange: (text: string) => void;
+  value: string;
 }
 
-const TextBox: React.FC<TextBoxProps> = ({ onChange }) => {
+const TextBox: React.FC<TextBoxProps> = ({ onChange, value }) => {
   const handleTextChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     onChange(event.target.value);
   };
 
   return (
-    <textarea onChange={handleTextChange}></textarea>
+    <textarea value={value} onChange={handleTextChange}></textarea>
   );
 };
 
