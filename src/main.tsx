@@ -1,49 +1,38 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import App from "./App.tsx";
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+} from "react-router-dom";
 import "./index.css";
-import ErrorPage from "./error-page.tsx";
-import Dashboard from "./routes/Dashboard.tsx";
-import DashboardModules from "./components/DashboardModules.tsx";
-import Documents from "./routes/Documents.tsx";
-import CreateDocs from "./routes/CreateDocs.tsx";
-import Login from "./routes/Login.tsx";
-import Signup from "./routes/Signup.tsx";
+import App from "./App";
+import ErrorPage from "./error-page";
+import Dashboard from "./routes/Dashboard";
+import Document from "./components/Document";
+import Documents from "./routes/Documents";
+import CreateDocs from "./routes/CreateDocs";
+import Login from "./routes/Login";
+import Signup from "./routes/Signup";
+import DashboardModules from "./components/DashboardModules";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/login",
-    element: <Login />
-  },
-  {
-    path: "/signup",
-    element: <Signup />
-  },
-  {
-    path: "/dashboard",
-    element: <Dashboard />,
-    children: [
-      {
-        path: "/dashboard",
-        element: <DashboardModules />
-      },
-      {
-        path: "/dashboard/create",
-        element: <CreateDocs />
-      },
-      {
-        path: "/dashboard/documents",
-        element: <Documents />
-      }
-    ]
-  }
-])
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <>
+      <Route path="/" element={<App />} />
+      <Route path="login" element={<Login />} />
+      <Route path="signup" element={<Signup />} />
+      <Route path="dashboard" element={<Dashboard />}>
+        <Route index element={<DashboardModules />} />
+        <Route path="create" element={<CreateDocs />} />
+        <Route path="documents" element={<Documents />} />
+        <Route path="documents/:id" element={<Document />} />
+      </Route>
+      <Route path="*" element={<ErrorPage />} />
+    </>
+  )
+);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

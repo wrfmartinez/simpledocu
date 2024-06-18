@@ -1,9 +1,41 @@
-const Documents = () => {
+// Documents.tsx
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { getDocuments } from '../services/documentsAPI';
+
+interface Document {
+  _id: string;
+  title: string;
+}
+
+const Documents: React.FC = () => {
+  const [documents, setDocuments] = useState<Document[]>([]);
+
+  useEffect(() => {
+    fetchDocuments();
+  }, []);
+
+  const fetchDocuments = async () => {
+    try {
+      const data = await getDocuments();
+      setDocuments(data);
+    } catch (error) {
+      console.error('Error fetching documents:', error);
+    }
+  };
+
   return (
     <div>
-      My Docs
+      <h1>Documents</h1>
+      <ul>
+        {documents.map((doc) => (
+          <li key={doc._id}>
+            <Link to={`${doc._id}`}>{doc.title}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
-  )
-}
+  );
+};
 
 export default Documents;

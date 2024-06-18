@@ -6,6 +6,7 @@ const CreateDocs = () => {
     <section className="create-documentation">
       <GenerateCodeSnippet />
       <TextBox />
+      <button>Save</button>
     </section>
   )
 }

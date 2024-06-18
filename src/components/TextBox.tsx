@@ -16,7 +16,6 @@ const TextBox = () => {
       <textarea value={inputText} onChange={handleChange}>
 
       </textarea>
-      <button>Save</button>
     </>
   )
 }
