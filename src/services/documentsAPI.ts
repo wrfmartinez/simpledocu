@@ -21,6 +21,11 @@ export const getDocument = async (documentId: string): Promise<any> => {
 };
 
 export const createDocument = async (document: any): Promise<any> => {
+  // Convert highlightedLines to string if it's an array
+  if (Array.isArray(document.highlightedLines)) {
+    document.highlightedLines = document.highlightedLines.join(",");
+  }
+
   const response = await fetch(`${BASE_URL}/document/new`, {
     method: "POST",
     headers: {
@@ -33,6 +38,7 @@ export const createDocument = async (document: any): Promise<any> => {
   }
   return response.json();
 };
+
 
 export const updateDocument = async (
   documentId: string,

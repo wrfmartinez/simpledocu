@@ -4,11 +4,22 @@ import TextBox from "../components/TextBox";
 import { createDocument } from "../services/documentsAPI";
 
 const CreateDocs: React.FC = () => {
+  const [title, setTitle] = useState("");
   const [codeSnippet, setCodeSnippet] = useState("");
+  const [codeLanguage, setCodeLanguage] = useState("");
+  const [highlightedLines, setHighlightedLines] = useState<string[]>([]);
   const [text, setText] = useState("");
+  const [isSaved, setIsSaved] = useState(false);
+  const [notSaved, setNotSaved] = useState(false);
 
-  const handleCodeSnippetChange = (newSnippet: string) => {
-    setCodeSnippet(newSnippet);
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+  }
+
+  const handleCodeSnippetChange = (codeSnippet: string, codeLanguage: string, highlightedLines: string[]) => {
+    setCodeSnippet(codeSnippet);
+    setCodeLanguage(codeLanguage);
+    setHighlightedLines(highlightedLines);
   };
 
   const handleTextChange = (newText: string) => {
@@ -17,25 +28,42 @@ const CreateDocs: React.FC = () => {
 
   const handleSubmit = async () => {
     const documentData = {
-      title: "Your Document Title", // Replace this with the actual title you want to use
+      title: title,
       snippet: codeSnippet,
+      codeLanguage: codeLanguage,
+      highlightedLines: highlightedLines,
       text: text
     };
 
     try {
       await createDocument(documentData);
-      // Handle successful document creation (e.g., show a success message, redirect, etc.)
+      // Reset input state
+      setTitle("");
+      setCodeSnippet("");
+      setCodeLanguage("");
+      setHighlightedLines([]);
+      setText("");
+      // Show success message
+      setIsSaved(true);
+      setTimeout(() => setIsSaved(false), 3000); // Hide message after 3 seconds
     } catch (error) {
       // Handle error (e.g., show an error message)
       console.error("Error creating document:", error);
+      // Show success message
+      setNotSaved(true);
+      setTimeout(() => setNotSaved(false), 3000); // Hide message after 3 seconds
     }
   };
 
   return (
     <section className="create-documentation">
+      <label htmlFor="title">Title </label>
+      <input type="text" name="title" value={title} onChange={handleTitleChange} />
       <GenerateCodeSnippet onChange={handleCodeSnippetChange} />
       <TextBox onChange={handleTextChange} />
       <button onClick={handleSubmit}>Save</button>
+      {isSaved && <p>Document saved successfully!</p>}
+      {notSaved && <p>Sorry. Document could not be saved. Try again later.</p>}
     </section>
   );
 };

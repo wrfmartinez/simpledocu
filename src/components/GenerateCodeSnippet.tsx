@@ -3,7 +3,7 @@ import CodeSnippet from "./CodeSnippet";
 import { useState } from "react";
 
 interface GenerateCodeSnippetProps {
-  onChange: (code: string) => void;
+  onChange: (code: string, language: string, highlightedLines: string[]) => void;
 }
 
 const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({ onChange }) => {
@@ -14,7 +14,20 @@ const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({ onChange }) =
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
     const newCode = e.target.value;
     setCode(newCode);
-    onChange(newCode);
+    onChange(newCode, language, highlightedLine);
+  };
+
+  const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newLanguage = e.target.value;
+    setLanguage(newLanguage);
+    onChange(code, newLanguage, highlightedLine);
+  };
+
+  const handleHighlightedLinesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    const lines = inputValue.split(",");
+    setHighlightedLine(lines);
+    onChange(code, language, lines);
   };
 
   return (
@@ -30,9 +43,7 @@ const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({ onChange }) =
         <label htmlFor="language">Select a Coding Language:</label>
         <select
           name="language"
-          onChange={(e) => {
-            setLanguage(e.target.value);
-          }}
+          onChange={handleLanguageChange}
         >
           <option value=""></option>
           <option value="html">HTML</option>
@@ -49,11 +60,7 @@ const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({ onChange }) =
           placeholder="Enter line numbers to highlight i.e 2:5, 7:7"
           name="highlightedLine"
           value={highlightedLine.join(",")}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            const inputValue = e.target.value;
-            const lines = inputValue.split(",");
-            setHighlightedLine(lines);
-          }}
+          onChange={handleHighlightedLinesChange}
         />
       </div>
       <CodeSnippet

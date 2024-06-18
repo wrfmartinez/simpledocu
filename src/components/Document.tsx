@@ -47,6 +47,10 @@ const Document: React.FC = () => {
         <CodeSnippet code={document.snippet ? document.snippet : ""} language={document.codeLanguage ? document.codeLanguage : ""} highlightedLine={document.highlightedLines ? document.highlightedLines?.split(",") : []} />
       }
       <div dangerouslySetInnerHTML={{__html: clean}}></div>
+      <div>
+      <button>Edit</button>
+      <button>Delete</button>
+      </div>
     </div>
   );
 };
