@@ -17,9 +17,18 @@ a {
   font-weight: 500;
   color: #e8e8e8;
   text-decoration: inherit;
+  transition: 0.1s ease-in;
 }
 a:hover {
-  color: #db84e8;
+  color: #ffffff;
+}
+
+.card-box {
+  transition: 0.3s ease-in;
+}
+
+.card-box:hover {
+  transform: skew(3deg, -2deg);
 }
 
 body {
