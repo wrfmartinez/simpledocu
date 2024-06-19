@@ -9,10 +9,15 @@ interface GenerateCodeSnippetProps {
   onChange: (code: string, language: string, highlightedLines: string[]) => void;
 }
 
-const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({ onChange, initialCode, initialLanguage, initialHighlightedLines }) => {
-  const [code, setCode] = useState("");
-  const [language, setLanguage] = useState("");
-  const [highlightedLine, setHighlightedLine] = useState<string[]>([]);
+const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({
+  initialCode = "",
+  initialLanguage = "",
+  initialHighlightedLines = [],
+  onChange
+}) => {
+  const [code, setCode] = useState<string>(initialCode);
+  const [language, setLanguage] = useState<string>(initialLanguage);
+  const [highlightedLine, setHighlightedLine] = useState<string[]>(initialHighlightedLines);
 
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
     const newCode = e.target.value;
@@ -28,7 +33,7 @@ const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({ onChange, ini
 
   const handleHighlightedLinesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-    const lines = inputValue.split(",");
+    const lines = inputValue.split(",").map(line => line.trim());
     setHighlightedLine(lines);
     onChange(code, language, lines);
   };
@@ -37,7 +42,7 @@ const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({ onChange, ini
     setCode(initialCode);
     setLanguage(initialLanguage);
     setHighlightedLine(initialHighlightedLines);
-  }, [initialCode, initialLanguage, initialHighlightedLines]);
+  }, []);
 
   return (
     <section className="documentation">
@@ -46,15 +51,16 @@ const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({ onChange, ini
           className="code-input"
           placeholder="Type your code here"
           name="code"
-          onChange={handleInput}
           value={code}
+          onChange={handleInput}
         />
         <label htmlFor="language">Select a Coding Language:</label>
         <select
           name="language"
+          value={language}
           onChange={handleLanguageChange}
         >
-          <option value=""></option>
+          <option value="">Select language</option>
           <option value="html">HTML</option>
           <option value="css">CSS</option>
           <option value="js">JavaScript</option>

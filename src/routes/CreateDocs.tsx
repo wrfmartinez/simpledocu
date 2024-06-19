@@ -59,8 +59,8 @@ const CreateDocs: React.FC = () => {
     <section className="create-documentation">
       <label htmlFor="title">Title </label>
       <input type="text" name="title" value={title} onChange={handleTitleChange} />
-      <GenerateCodeSnippet onChange={handleCodeSnippetChange} />
-      <TextBox onChange={handleTextChange} />
+      <GenerateCodeSnippet initialCode="" initialLanguage="" initialHighlightedLines={[]} onChange={handleCodeSnippetChange} />
+      <TextBox value={text} onChange={handleTextChange} />
       <button onClick={handleSubmit}>Save</button>
       {isSaved && <p>Document saved successfully!</p>}
       {notSaved && <p>Sorry. Document could not be saved. Try again later.</p>}
