@@ -27,11 +27,11 @@ const Documents: React.FC = () => {
   return (
     <div>
       <h1>Documents</h1>
-      <ul>
+      <ul style={{display: "flex", listStyle: "none", padding: "30px", gap: "20px", flexWrap: "wrap", border: "1px solid #fff", borderRadius: "10px"}}>
         {documents.map((doc) => (
-          <li key={doc._id}>
-            <Link to={`${doc._id}`}>{doc.title}</Link>
-          </li>
+          <Link style={{color: "#000"}} to={`${doc._id}`}><li className='card-doc' style={{width: "100px", height: "130px", textAlign: "center", border: "1px solid #fff", padding: "20px", backgroundColor: "#fff"}} key={doc._id}>
+            {doc.title}
+          </li></Link>
         ))}
       </ul>
     </div>

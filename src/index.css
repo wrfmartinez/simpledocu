@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -21,6 +23,24 @@ a {
 }
 a:hover {
   color: #ffffff;
+}
+
+code {
+  font-family: Inconsolata;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #dadada1b;
+  border-radius: 5px;
+  font-size: 1.07em;
+  padding: 2px;
+}
+
+.card-doc {
+  transition: 0.2s ease;
+}
+
+.card-doc:hover {
+  transform: scale(1.02);
 }
 
 .card-box {
