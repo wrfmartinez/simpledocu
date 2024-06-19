@@ -31,6 +31,11 @@ h1 {
   line-height: 1.1;
 }
 
+label {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -52,11 +57,31 @@ button:focus-visible {
 
 input {
   word-break: break-word;
+  transition: 0.3s ease-in;
+}
+
+select {
+  transition: 0.3s ease-in;
+}
+
+input:focus, select:focus {
+  box-shadow: -5px 5px 0px rgba(255, 255, 255, 0.091);
+  outline: none;
 }
 
 textarea {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;
+  font-size: 1rem;
+  border-top: none;
+  border: solid 1px #8a8a8a;
+  border-radius: 10px;
+  padding: 0.5rem;
   resize: none;
+  transition: 0.3s ease-in;
+}
+
+textarea:focus {
+  box-shadow: -5px 5px 0px rgba(255, 255, 255, 0.091);
+  outline: none;
 }

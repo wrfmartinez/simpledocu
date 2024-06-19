@@ -9,7 +9,15 @@ const TextBox: React.FC<TextBoxProps> = ({ onChange, value }) => {
   };
 
   return (
-    <textarea value={value} onChange={handleTextChange}></textarea>
+    <>
+      <textarea
+        className="notes-box"
+        name="notes"
+        placeholder="Add a Note"
+        value={value}
+        onChange={handleTextChange}
+      ></textarea>
+    </>
   );
 };
 

@@ -1,0 +1,27 @@
+.create-documentation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.create-text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-title {
+  border: 1px solid #8a8a8a;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom: none;
+  outline: none;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}
+
+textarea.notes-box {
+  height: 100%;
+  border-top: none;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}

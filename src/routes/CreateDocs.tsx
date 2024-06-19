@@ -2,6 +2,7 @@ import { useState } from "react";
 import GenerateCodeSnippet from "../components/GenerateCodeSnippet";
 import TextBox from "../components/TextBox";
 import { createDocument } from "../services/documentsAPI";
+import "../assets/css/CreateDocs.css";
 
 const CreateDocs: React.FC = () => {
   const [title, setTitle] = useState("");
@@ -57,10 +58,13 @@ const CreateDocs: React.FC = () => {
 
   return (
     <section className="create-documentation">
-      <label htmlFor="title">Title </label>
-      <input type="text" name="title" value={title} onChange={handleTitleChange} />
-      <GenerateCodeSnippet initialCode="" initialLanguage="" initialHighlightedLines={[]} onChange={handleCodeSnippetChange} />
+      <div className="create-text-container">
+      <input className="create-title" type="text" placeholder="Title" name="title" value={title} onChange={handleTitleChange} />
       <TextBox value={text} onChange={handleTextChange} />
+      </div>
+      <div>
+      <GenerateCodeSnippet initialCode="" initialLanguage="" initialHighlightedLines={[]} onChange={handleCodeSnippetChange} />
+      </div>
       <button onClick={handleSubmit}>Save</button>
       {isSaved && <p>Document saved successfully!</p>}
       {notSaved && <p>Sorry. Document could not be saved. Try again later.</p>}

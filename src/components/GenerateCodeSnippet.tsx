@@ -6,18 +6,24 @@ interface GenerateCodeSnippetProps {
   initialCode: string;
   initialLanguage: string;
   initialHighlightedLines: string[];
-  onChange: (code: string, language: string, highlightedLines: string[]) => void;
+  onChange: (
+    code: string,
+    language: string,
+    highlightedLines: string[]
+  ) => void;
 }
 
 const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({
   initialCode = "",
   initialLanguage = "",
   initialHighlightedLines = [],
-  onChange
+  onChange,
 }) => {
   const [code, setCode] = useState<string>(initialCode);
   const [language, setLanguage] = useState<string>(initialLanguage);
-  const [highlightedLine, setHighlightedLine] = useState<string[]>(initialHighlightedLines);
+  const [highlightedLine, setHighlightedLine] = useState<string[]>(
+    initialHighlightedLines
+  );
 
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
     const newCode = e.target.value;
@@ -31,9 +37,11 @@ const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({
     onChange(code, newLanguage, highlightedLine);
   };
 
-  const handleHighlightedLinesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleHighlightedLinesChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const inputValue = e.target.value;
-    const lines = inputValue.split(",").map(line => line.trim());
+    const lines = inputValue.split(",").map((line) => line.trim());
     setHighlightedLine(lines);
     onChange(code, language, lines);
   };
@@ -45,22 +53,15 @@ const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({
   }, []);
 
   return (
-    <section className="documentation">
+    <>
       <div className="user-options">
-        <textarea
-          className="code-input"
-          placeholder="Type your code here"
-          name="code"
-          value={code}
-          onChange={handleInput}
-        />
-        <label htmlFor="language">Select a Coding Language:</label>
         <select
+          className="code-language"
           name="language"
           value={language}
           onChange={handleLanguageChange}
         >
-          <option value="">Select language</option>
+          <option value="">Select Language</option>
           <option value="html">HTML</option>
           <option value="css">CSS</option>
           <option value="js">JavaScript</option>
@@ -69,13 +70,20 @@ const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({
           <option value="c">C</option>
           <option value="go">Go</option>
         </select>
-        <label htmlFor="highlightedLine">Highlight Lines:</label>
         <input
           type="text"
+          className="highlighted-lines"
           placeholder="Enter line numbers to highlight i.e 2:5, 7:7"
           name="highlightedLine"
           value={highlightedLine.join(",")}
           onChange={handleHighlightedLinesChange}
+        />
+        <textarea
+          className="code-input"
+          placeholder="Type your code here"
+          name="code"
+          value={code}
+          onChange={handleInput}
         />
       </div>
       <CodeSnippet
@@ -83,7 +91,7 @@ const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({
         language={language}
         highlightedLine={highlightedLine}
       />
-    </section>
+    </>
   );
 };
 
