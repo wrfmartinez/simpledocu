@@ -1,8 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "../assets/css/Sidebar.css";
 
 const Sidebar = () => {
-  console.log(location.pathname.split("/")[1]);
+  const location = useLocation();
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <nav className="sidebar">
@@ -13,22 +14,24 @@ const Sidebar = () => {
       {location.pathname.split("/")[1] !== "login" &&
       location.pathname.split("/")[1] !== "signup" ? (
         <>
-          <ul className="sidebar-links">
-            <li className="sidebar-link">
-              <a href="/dashboard">Dashboard</a>
-            </li>
-            <li className="sidebar-link">
-              <a className="" href="/dashboard/create">
-                Create Docs
-              </a>
-            </li>
-            <li className="sidebar-link">
-              <a className="active" href="/dashboard/documents">
-                My Docs
-              </a>
-            </li>
-          </ul>
-          <Link to="/">
+          <div style={{width: "100%", paddingBottom: "50px"}}>
+            <ul className="sidebar-links">
+              <li className="sidebar-link">
+                <Link className={isActive("/dashboard") ? "active" : ""} to="/dashboard">Dashboard</Link>
+              </li>
+              <li className="sidebar-link">
+                <Link className={isActive("/dashboard/create") ? "active" : ""} to="/dashboard/create">
+                  Create Docs
+                </Link>
+              </li>
+              <li className="sidebar-link">
+                <Link className={isActive("/dashboard/documents") ? "active" : ""} to="/dashboard/documents">
+                  My Docs
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <Link style={{marginLeft: "7px"}} to="/">
             <button>Logout</button>
           </Link>
         </>
