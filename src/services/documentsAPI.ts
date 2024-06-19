@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000";
+const BASE_URL = "http://3.17.153.113:3000";
 
 export const getDocuments = async (): Promise<any> => {
   const response = await fetch(`${BASE_URL}/`);
