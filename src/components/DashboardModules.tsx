@@ -1,34 +1,20 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import "../assets/css/DashboardModules.css";
 
 const DashboardModules = () => {
   return (
     <>
       <h1>Welcome to your Dashboard</h1>
-      <h3 style={{ borderBottom: "1px solid white", paddingBottom: "15px" }}>
+      <h3 className="suggestions-title">
         Here are some suggestions to get you started
       </h3>
-      <div style={{ display: "flex", gap: "30px", flexWrap: "wrap" }}>
+      <div className="suggestions-container">
         <div className="card-box">
           <Link to="/dashboard/create">
-            <div
-              style={{
-                width: "140px",
-                height: "140px",
-                padding: "20px",
-                backgroundColor: "#1c1c1c",
-                borderRadius: "10px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <FontAwesomeIcon
-                style={{ marginBottom: "10px", fontSize: "1.4em" }}
-                icon={faFile}
-              />
+            <div className="module">
+              <FontAwesomeIcon className="doc-icon" icon={faFile} />
               Create a New Doc
             </div>
           </Link>
@@ -36,23 +22,8 @@ const DashboardModules = () => {
 
         <div className="card-box">
           <Link to="/dashboard/documents">
-            <div
-              style={{
-                width: "140px",
-                height: "140px",
-                padding: "20px",
-                backgroundColor: "#1c1c1c",
-                borderRadius: "10px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <FontAwesomeIcon
-                style={{ marginBottom: "10px", fontSize: "1.4em" }}
-                icon={faFile}
-              />
+            <div className="module">
+              <FontAwesomeIcon className="doc-icon" icon={faFile} />
               My Docs
             </div>
           </Link>

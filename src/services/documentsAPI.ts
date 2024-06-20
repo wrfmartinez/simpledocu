@@ -39,7 +39,6 @@ export const createDocument = async (document: any): Promise<any> => {
   return response.json();
 };
 
-
 export const updateDocument = async (
   documentId: string,
   document: any

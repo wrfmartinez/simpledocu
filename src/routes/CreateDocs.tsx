@@ -15,9 +15,13 @@ const CreateDocs: React.FC = () => {
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
-  }
+  };
 
-  const handleCodeSnippetChange = (codeSnippet: string, codeLanguage: string, highlightedLines: string[]) => {
+  const handleCodeSnippetChange = (
+    codeSnippet: string,
+    codeLanguage: string,
+    highlightedLines: string[]
+  ) => {
     setCodeSnippet(codeSnippet);
     setCodeLanguage(codeLanguage);
     setHighlightedLines(highlightedLines);
@@ -33,7 +37,7 @@ const CreateDocs: React.FC = () => {
       snippet: codeSnippet,
       codeLanguage: codeLanguage,
       highlightedLines: highlightedLines,
-      text: text
+      text: text,
     };
 
     try {
@@ -59,11 +63,23 @@ const CreateDocs: React.FC = () => {
   return (
     <section className="create-documentation">
       <div className="create-text-container">
-      <input className="create-title" type="text" placeholder="Title" name="title" value={title} onChange={handleTitleChange} />
-      <TextBox value={text} onChange={handleTextChange} />
+        <input
+          className="create-title"
+          type="text"
+          placeholder="Title"
+          name="title"
+          value={title}
+          onChange={handleTitleChange}
+        />
+        <TextBox value={text} onChange={handleTextChange} />
       </div>
       <div>
-      <GenerateCodeSnippet initialCode="" initialLanguage="" initialHighlightedLines={[]} onChange={handleCodeSnippetChange} />
+        <GenerateCodeSnippet
+          initialCode=""
+          initialLanguage=""
+          initialHighlightedLines={[]}
+          onChange={handleCodeSnippetChange}
+        />
       </div>
       <button onClick={handleSubmit}>Save</button>
       {isSaved && <p>Document saved successfully!</p>}

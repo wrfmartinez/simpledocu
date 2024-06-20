@@ -9,7 +9,6 @@ nav.sidebar {
   justify-content: flex-start;
   background-color: #151515;
 }
-
 .sidebar-brand {
   width: 88%;
   display: flex;
@@ -17,15 +16,12 @@ nav.sidebar {
   font-size: 1.2rem;
   border-bottom: 1.5px dotted #373737;
 }
-
 .sidebar-brand:hover {
   color: unset;
 }
-
 .sidebar-brand img {
   width: 30px;
 }
-
 .sidebar-links {
   display: flex;
   flex-direction: column;
@@ -35,23 +31,27 @@ nav.sidebar {
   width: 88%;
   font-size: 0.9rem;
 }
-
 .sidebar-link a {
   border: 1px solid transparent;
   padding: 8px 20px;
 }
-
 .active {
-  background-color: #1A1B1D;
+  background-color: #1a1b1d;
   box-shadow: rgba(255, 255, 255, 0.2) 0 -1px 0 0 inset;
-  background-image: linear-gradient(180deg, rgba(206, 211, 234, 0.07) 0%, transparent 100%);
+  background-image: linear-gradient(
+    180deg,
+    rgba(206, 211, 234, 0.07) 0%,
+    transparent 100%
+  );
   border-radius: 7px;
   margin-left: 7px;
   transition: all 150ms ease-in-out;
 }
-
 .active:hover {
   color: #cacaca;
   border-color: #db84e8ae;
   box-shadow: 3px 3.5px 0px rgba(230, 230, 230, 0.7);
+}
+.logout-btn {
+  margin-left: 7px;
 }

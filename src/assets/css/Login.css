@@ -1,0 +1,35 @@
+.login-main {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+}
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 300px;
+  gap: 5px;
+}
+.login-form label {
+  align-self: flex-start;
+}
+.login-form input {
+  width: 100%;
+  padding: 8px;
+}
+.login-form-btn {
+  margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  .login-main {
+    grid-template-columns: 1fr;
+  }
+}

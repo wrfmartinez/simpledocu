@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap");
 
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -14,7 +14,6 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 a {
   font-weight: 500;
   color: #e8e8e8;
@@ -24,7 +23,6 @@ a {
 a:hover {
   color: #ffffff;
 }
-
 code {
   font-family: Inconsolata;
   font-weight: 600;
@@ -34,37 +32,29 @@ code {
   font-size: 1.07em;
   padding: 2px;
 }
-
 .card-doc {
   transition: 0.2s ease;
 }
-
 .card-doc:hover {
   transform: scale(1.02);
 }
-
 .card-box {
   transition: 0.3s ease-in;
 }
-
 .card-box:hover {
   transform: skew(3deg, -2deg);
 }
-
 body {
   margin: 0;
 }
-
 h1 {
   font-size: 2.2em;
   line-height: 1.1;
 }
-
 label {
   font-size: 1.1rem;
   font-weight: 500;
 }
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -83,21 +73,18 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
-
 input {
   word-break: break-word;
   transition: 0.3s ease-in;
 }
-
 select {
   transition: 0.3s ease-in;
 }
-
-input:focus, select:focus {
+input:focus,
+select:focus {
   box-shadow: -5px 5px 0px rgba(255, 255, 255, 0.091);
   outline: none;
 }
-
 textarea {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -109,12 +96,10 @@ textarea {
   resize: none;
   transition: 0.3s ease-in;
 }
-
 textarea:focus {
   box-shadow: -5px 5px 0px rgba(255, 255, 255, 0.091);
   outline: none;
 }
-
 .sidebar-brand-mobile {
   display: none;
 }
@@ -124,13 +109,11 @@ textarea:focus {
     grid-template-columns: 1fr !important;
     height: 100vh !important;
   }
-
   .dashboard-content {
     background-color: #242424;
     margin-top: 145.2px;
     border-bottom-left-radius: 0 !important;
   }
-
   nav.sidebar {
     padding: 2rem !important;
     height: unset !important;
@@ -139,94 +122,77 @@ textarea:focus {
     justify-content: space-between !important;
     align-items: center !important;
   }
-
   a.sidebar-brand {
     width: 30%;
     border-bottom: none;
   }
-
-  a.sidebar-brand-mobile+div {
+  a.sidebar-brand-mobile + div {
     display: flex;
     justify-content: center;
     padding: 0 !important;
   }
-
   ul.sidebar-links {
     flex-direction: row;
     justify-content: center;
     align-items: center;
   }
-
   .sidebar-link {
     text-align: center;
   }
-
   .sidebar-link a {
     text-align: center;
     padding: 0.2rem !important;
     margin: 0;
     border: none !important;
   }
-
   a.active {
     box-shadow: none;
     background: none;
     border: none;
   }
-
   a.active:hover {
     box-shadow: none;
     border: none;
     text-decoration: underline;
   }
-
-  .sidebar-brand {
-    display: none !important;
-  }
-
   .sidebar-brand-mobile {
-    display: flex;
-    gap: 10px;
-    font-size: 1.2rem;
-  }
-  
-  .sidebar-brand-mobile img {
-    width: 40px;
+    display: none !important;
   }
 }
 
 @media (max-width: 610px) {
+  .sidebar-brand-mobile {
+    display: flex !important;
+    gap: 10px;
+    font-size: 1.2rem;
+  }
+  .sidebar-brand-mobile img {
+    width: 40px;
+  }
   .sidebar-brand {
     display: none !important;
   }
-
   .sidebar-link {
     display: none;
   }
-
   .create-documentation {
     grid-template-columns: 1fr !important;
   }
-
   .create-documentation button {
     order: 3;
   }
-
   .create-text-container {
     order: 1;
   }
-
   .notes-box {
     height: 300px !important;
   }
-
   .code-snippet .code {
     font-size: 0.9em;
     padding: 1rem;
     white-space: pre-wrap;
     word-break: break-word;
   }
-
   .code-snippet .code .table-row {
     display: flex;
   }

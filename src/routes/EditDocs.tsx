@@ -21,7 +21,11 @@ const EditDocs: React.FC = () => {
         setTitle(documentData.title);
         setCodeSnippet(documentData.snippet || "");
         setCodeLanguage(documentData.codeLanguage || "");
-        setHighlightedLines(documentData.highlightedLines ? documentData.highlightedLines.split(",") : []);
+        setHighlightedLines(
+          documentData.highlightedLines
+            ? documentData.highlightedLines.split(",")
+            : []
+        );
         setText(documentData.text);
       } catch (error) {
         console.error("Error fetching document:", error);
@@ -35,7 +39,11 @@ const EditDocs: React.FC = () => {
     setTitle(e.target.value);
   };
 
-  const handleCodeSnippetChange = (codeSnippet: string, codeLanguage: string, highlightedLines: string[]) => {
+  const handleCodeSnippetChange = (
+    codeSnippet: string,
+    codeLanguage: string,
+    highlightedLines: string[]
+  ) => {
     setCodeSnippet(codeSnippet);
     setCodeLanguage(codeLanguage);
     setHighlightedLines(highlightedLines);
@@ -51,7 +59,7 @@ const EditDocs: React.FC = () => {
       snippet: codeSnippet,
       codeLanguage: codeLanguage,
       highlightedLines: highlightedLines.join(","),
-      text: text
+      text: text,
     };
 
     try {
@@ -66,8 +74,18 @@ const EditDocs: React.FC = () => {
   return (
     <section className="edit-documentation">
       <label htmlFor="title">Title </label>
-      <input type="text" name="title" value={title} onChange={handleTitleChange} />
-      <GenerateCodeSnippet initialCode={codeSnippet} initialLanguage={codeLanguage} initialHighlightedLines={highlightedLines} onChange={handleCodeSnippetChange} />
+      <input
+        type="text"
+        name="title"
+        value={title}
+        onChange={handleTitleChange}
+      />
+      <GenerateCodeSnippet
+        initialCode={codeSnippet}
+        initialLanguage={codeLanguage}
+        initialHighlightedLines={highlightedLines}
+        onChange={handleCodeSnippetChange}
+      />
       <TextBox value={text} onChange={handleTextChange} />
       <button onClick={handleSubmit}>Done</button>
       {isDone && <p>Saving...</p>}

@@ -18,24 +18,35 @@ const Sidebar = () => {
       {location.pathname.split("/")[1] !== "login" &&
       location.pathname.split("/")[1] !== "signup" ? (
         <>
-          <div style={{width: "100%", paddingBottom: "50px"}}>
+          <div style={{ width: "100%", paddingBottom: "50px" }}>
             <ul className="sidebar-links">
               <li className="sidebar-link">
-                <Link className={isActive("/dashboard") ? "active" : ""} to="/dashboard">Dashboard</Link>
+                <Link
+                  className={isActive("/dashboard") ? "active" : ""}
+                  to="/dashboard"
+                >
+                  Dashboard
+                </Link>
               </li>
               <li className="sidebar-link">
-                <Link className={isActive("/dashboard/create") ? "active" : ""} to="/dashboard/create">
+                <Link
+                  className={isActive("/dashboard/create") ? "active" : ""}
+                  to="/dashboard/create"
+                >
                   Create Docs
                 </Link>
               </li>
               <li className="sidebar-link">
-                <Link className={isActive("/dashboard/documents") ? "active" : ""} to="/dashboard/documents">
+                <Link
+                  className={isActive("/dashboard/documents") ? "active" : ""}
+                  to="/dashboard/documents"
+                >
                   My Docs
                 </Link>
               </li>
             </ul>
           </div>
-          <Link style={{marginLeft: "7px"}} to="/">
+          <Link className="logout-btn" to="/">
             <button>Logout</button>
           </Link>
         </>

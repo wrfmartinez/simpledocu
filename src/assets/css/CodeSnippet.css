@@ -3,29 +3,23 @@
   padding: 40px;
   border-radius: 10px;
 }
-
 .table-row {
   display: grid;
   grid-template-columns: 10px 200px;
   gap: 10px;
 }
-
 .line-number {
   margin-right: 20px;
 }
-
 .bg-darkgray {
   background-color: #8888881f;
 }
-
 .opacity-60 {
   opacity: 0.6;
 }
-
 .text-gray-300 {
   color: #cacaca;
 }
-
 .text-gray-500 {
   color: #939393;
 }

@@ -14,12 +14,6 @@ const Nav = () => {
           />
         </Link>
         <ul className="nav-links">
-          {/* <li className="nav-link">
-            <Link to="#">About</Link>
-          </li> */}
-          {/* <li className="nav-link">
-            <Link to="#">Tutorial</Link>
-          </li> */}
           <li className="nav-link">
             <Link to="/dashboard">Dashboard</Link>
           </li>
@@ -27,7 +21,7 @@ const Nav = () => {
       </div>
       <div>
         <Link to="/login">
-          <button style={{ marginRight: "10px" }}>Login</button>
+          <button className="login-btn">Login</button>
         </Link>
         <Link to="/signup">
           <button>Get Started</button>
