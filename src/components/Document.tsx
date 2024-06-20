@@ -2,9 +2,12 @@
 import React, { useState, useEffect } from "react";
 import DOMPurify from "dompurify";
 import { Remarkable } from "remarkable";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { getDocument, deleteDocument } from "../services/documentsAPI";
 import CodeSnippet from "./CodeSnippet";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import "../assets/css/Document.css";
 
 interface Document {
   _id: string;
@@ -54,7 +57,7 @@ const Document: React.FC = () => {
     } catch (err) {
       console.error("Could not delete document: ", err);
     }
-  }
+  };
 
   const handleEdit = () => {
     navigate(`/dashboard/documents/${id}/edit`);
@@ -62,7 +65,7 @@ const Document: React.FC = () => {
 
   return (
     <div>
-      <h2 style={{ borderBottom: "1px solid white" }}>Notes</h2>
+      <h2 className="document-title">Notes</h2>
       {
         <CodeSnippet
           code={document.snippet ? document.snippet : ""}
@@ -75,12 +78,15 @@ const Document: React.FC = () => {
         />
       }
       <div>
-        <div className="" dangerouslySetInnerHTML={{ __html: clean }}></div>
+        <div dangerouslySetInnerHTML={{ __html: clean }}></div>
       </div>
-      <div style={{display: "flex", gap: "10px"}}>
+      <div className="btn-container">
         <button onClick={handleEdit}>Edit</button>
         <button onClick={handleDelete}>Delete</button>
       </div>
+      <Link to="/dashboard/documents">
+        <FontAwesomeIcon className="back-btn" icon={faArrowCircleLeft} />
+      </Link>
     </div>
   );
 };
