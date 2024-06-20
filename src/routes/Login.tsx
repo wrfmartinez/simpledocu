@@ -1,9 +1,10 @@
-import { useAuth0 } from "@auth0/auth0-react";
+// import { useAuth0 } from "@auth0/auth0-react";
 import Sidebar from "../components/Sidebar";
 import "../assets/css/Login.css";
 
 const Login = () => {
-  const { loginWithRedirect } = useAuth0();
+  // const { loginWithRedirect } = useAuth0();
+  
   return (
     <main className="login-main">
       <Sidebar />
@@ -17,8 +18,7 @@ const Login = () => {
             name="password"
             placeholder="enter a password"
           />
-            <button className="login-form-btn"
-            onClick={() => loginWithRedirect()}>Login</button>
+            <button className="login-form-btn">Login</button>
         </div>
       </div>
     </main>

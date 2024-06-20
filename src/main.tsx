@@ -5,7 +5,7 @@ import {
   createRoutesFromElements,
   RouterProvider,
 } from "react-router-dom";
-import { Auth0Provider } from "@auth0/auth0-react";
+// import { Auth0Provider } from "@auth0/auth0-react";
 import "./index.css";
 import App from "./App";
 import ErrorPage from "./error-page";
@@ -37,13 +37,13 @@ const router = createBrowserRouter(
 );
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <Auth0Provider
-    domain={import.meta.env.VITE_DOMAIN}
-    clientId={import.meta.env.VITE_CLIENT_ID}
-    authorizationParams={{
-      redirect_uri: window.location.origin
-    }}
-  >
+  // <Auth0Provider
+  //   domain={import.meta.env.VITE_DOMAIN}
+  //   clientId={import.meta.env.VITE_CLIENT_ID}
+  //   authorizationParams={{
+  //     redirect_uri: window.location.origin
+  //   }}
+  // >
     <RouterProvider router={router} />
-  </Auth0Provider>
+  // </Auth0Provider>
 );

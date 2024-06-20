@@ -1,9 +1,9 @@
-import { useAuth0 } from "@auth0/auth0-react";
+// import { useAuth0 } from "@auth0/auth0-react";
 import { Link, useLocation } from "react-router-dom";
 import "../assets/css/Sidebar.css";
 
 const Sidebar = () => {
-  const { logout } = useAuth0();
+  // const { logout } = useAuth0();
   const location = useLocation();
   const isActive = (path: string) => location.pathname === path;
 
@@ -49,7 +49,7 @@ const Sidebar = () => {
             </ul>
           </div>
           <Link className="logout-btn" to="/">
-            <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin }})}>Logout</button>
+            <button>Logout</button>
           </Link>
         </>
       ) : (
