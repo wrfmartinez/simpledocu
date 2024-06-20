@@ -12,7 +12,6 @@ const CodeSnippet = ({ code, language, highlightedLine }: IProps) => {
   const [state, copyToClipboard] = useCopyToClipboard();
 
   const copyCode = () => {
-    // Logic to copy `code`
     copyToClipboard(code);
   };
 

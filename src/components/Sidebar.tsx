@@ -11,6 +11,10 @@ const Sidebar = () => {
         <img src="../../public/simpledocu.svg" alt="simple docu logo" />
         <p>SimpleDocu</p>
       </a>
+      <a className="sidebar-brand-mobile" href="/dashboard">
+        <img src="../../public/simpledocu.svg" alt="simple docu logo" />
+        <p>SimpleDocu</p>
+      </a>
       {location.pathname.split("/")[1] !== "login" &&
       location.pathname.split("/")[1] !== "signup" ? (
         <>

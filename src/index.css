@@ -114,3 +114,120 @@ textarea:focus {
   box-shadow: -5px 5px 0px rgba(255, 255, 255, 0.091);
   outline: none;
 }
+
+.sidebar-brand-mobile {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  #dashboard {
+    grid-template-columns: 1fr !important;
+    height: 100vh !important;
+  }
+
+  .dashboard-content {
+    background-color: #242424;
+    margin-top: 145.2px;
+    border-bottom-left-radius: 0 !important;
+  }
+
+  nav.sidebar {
+    padding: 2rem !important;
+    height: unset !important;
+    flex-direction: row !important;
+    position: fixed !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  a.sidebar-brand {
+    width: 30%;
+    border-bottom: none;
+  }
+
+  a.sidebar-brand-mobile+div {
+    display: flex;
+    justify-content: center;
+    padding: 0 !important;
+  }
+
+  ul.sidebar-links {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sidebar-link {
+    text-align: center;
+  }
+
+  .sidebar-link a {
+    text-align: center;
+    padding: 0.2rem !important;
+    margin: 0;
+    border: none !important;
+  }
+
+  a.active {
+    box-shadow: none;
+    background: none;
+    border: none;
+  }
+
+  a.active:hover {
+    box-shadow: none;
+    border: none;
+    text-decoration: underline;
+  }
+
+  .sidebar-brand {
+    display: none !important;
+  }
+
+  .sidebar-brand-mobile {
+    display: flex;
+    gap: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .sidebar-brand-mobile img {
+    width: 40px;
+  }
+}
+
+@media (max-width: 610px) {
+  .sidebar-brand {
+    display: none !important;
+  }
+
+  .sidebar-link {
+    display: none;
+  }
+
+  .create-documentation {
+    grid-template-columns: 1fr !important;
+  }
+
+  .create-documentation button {
+    order: 3;
+  }
+
+  .create-text-container {
+    order: 1;
+  }
+
+  .notes-box {
+    height: 300px !important;
+  }
+
+  .code-snippet .code {
+    font-size: 0.9em;
+    padding: 1rem;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  .code-snippet .code .table-row {
+    display: flex;
+  }
+}
