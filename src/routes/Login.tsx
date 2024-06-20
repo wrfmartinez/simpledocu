@@ -1,8 +1,9 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import Sidebar from "../components/Sidebar";
-import { Link } from "react-router-dom";
 import "../assets/css/Login.css";
 
 const Login = () => {
+  const { loginWithRedirect } = useAuth0();
   return (
     <main className="login-main">
       <Sidebar />
@@ -16,9 +17,8 @@ const Login = () => {
             name="password"
             placeholder="enter a password"
           />
-          <Link to="/dashboard">
-            <button className="login-form-btn">Login</button>
-          </Link>
+            <button className="login-form-btn"
+            onClick={() => loginWithRedirect()}>Login</button>
         </div>
       </div>
     </main>
