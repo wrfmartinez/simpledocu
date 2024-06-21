@@ -45,6 +45,7 @@ const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     const inputValue = e.target.value;
+    // trim white space for each value in the array split by a comma
     const lines = inputValue.split(",").map((line) => line.trim());
     setHighlightedLine(lines);
     onChange(code, language, lines);

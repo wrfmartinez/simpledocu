@@ -21,7 +21,7 @@ const Sidebar = () => {
         <img src="../../public/simpledocu.svg" alt="simple docu logo" />
         <p>SimpleDocu</p>
       </Link>
-      {/* Check if pathname endpoint does is not login and signup, if it's not then render */}
+      {/* Check if pathname endpoint is not login and signup, if it's not then render */}
       {location.pathname.split("/")[1] !== "login" &&
       location.pathname.split("/")[1] !== "signup" ? (
         <>
