@@ -14,24 +14,24 @@ const EditDocs: React.FC = () => {
   const [isDone, setIsDone] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchDocumentData = async () => {
-      try {
-        const documentData = await getDocument(id);
-        setTitle(documentData.title);
-        setCodeSnippet(documentData.snippet || "");
-        setCodeLanguage(documentData.codeLanguage || "");
-        setHighlightedLines(
-          documentData.highlightedLines
-            ? documentData.highlightedLines.split(",")
-            : []
-        );
-        setText(documentData.text);
-      } catch (error) {
-        console.error("Error fetching document:", error);
-      }
-    };
+  const fetchDocumentData = async () => {
+    try {
+      const documentData = await getDocument(id);
+      setTitle(documentData.title);
+      setCodeSnippet(documentData.snippet || "");
+      setCodeLanguage(documentData.codeLanguage || "");
+      setHighlightedLines(
+        documentData.highlightedLines
+          ? documentData.highlightedLines.split(",")
+          : []
+      );
+      setText(documentData.text);
+    } catch (error) {
+      console.error("Error fetching document:", error);
+    }
+  };
 
+  useEffect(() => {
     fetchDocumentData();
   }, [id]);
 
@@ -72,21 +72,26 @@ const EditDocs: React.FC = () => {
   };
 
   return (
-    <section className="edit-documentation">
-      <label htmlFor="title">Title </label>
-      <input
-        type="text"
-        name="title"
-        value={title}
-        onChange={handleTitleChange}
-      />
-      <GenerateCodeSnippet
-        initialCode={codeSnippet}
-        initialLanguage={codeLanguage}
-        initialHighlightedLines={highlightedLines}
-        onChange={handleCodeSnippetChange}
-      />
-      <TextBox value={text} onChange={handleTextChange} />
+    <section className="edit-documentation create-documentation">
+      <div className="create-text-container">
+        <input
+          className="create-title"
+          type="text"
+          placeholder="Title"
+          name="title"
+          value={title}
+          onChange={handleTitleChange}
+        />
+        <TextBox value={text} onChange={handleTextChange} />
+      </div>
+      <div>
+        <GenerateCodeSnippet
+          initialCode={codeSnippet}
+          initialLanguage={codeLanguage}
+          initialHighlightedLines={highlightedLines}
+          onChange={handleCodeSnippetChange}
+        />
+      </div>
       <button onClick={handleSubmit}>Done</button>
       {isDone && <p>Saving...</p>}
     </section>

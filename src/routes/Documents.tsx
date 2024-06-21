@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getDocuments } from "../services/documentsAPI";
+import "../assets/css/Documents.css";
 
 interface Document {
   _id: string;
@@ -27,31 +28,10 @@ const Documents: React.FC = () => {
   return (
     <div>
       <h1>Documents</h1>
-      <ul
-        style={{
-          display: "flex",
-          listStyle: "none",
-          padding: "30px",
-          gap: "20px",
-          flexWrap: "wrap",
-          border: "1px solid #fff",
-          borderRadius: "10px",
-        }}
-      >
+      <ul className="docs-container">
         {documents.map((doc) => (
-          <Link style={{ color: "#000" }} to={`${doc._id}`}>
-            <li
-              className="card-doc"
-              style={{
-                width: "100px",
-                height: "130px",
-                textAlign: "center",
-                border: "1px solid #fff",
-                padding: "20px",
-                backgroundColor: "#fff",
-              }}
-              key={doc._id}
-            >
+          <Link className="doc-text" key={doc._id} to={`${doc._id}`}>
+            <li className="card-doc" key={doc._id}>
               {doc.title}
             </li>
           </Link>

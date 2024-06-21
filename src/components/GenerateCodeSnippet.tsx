@@ -47,9 +47,9 @@ const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({
   };
 
   useEffect(() => {
-    setCode(initialCode);
-    setLanguage(initialLanguage);
-    setHighlightedLine(initialHighlightedLines);
+    setCode(code);
+    setLanguage(language);
+    setHighlightedLine(highlightedLine);
   }, []);
 
   return (

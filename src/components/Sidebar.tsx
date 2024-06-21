@@ -9,14 +9,14 @@ const Sidebar = () => {
 
   return (
     <nav className="sidebar">
-      <a className="sidebar-brand" href="/">
+      <Link className="sidebar-brand" to="/">
         <img src="../../public/simpledocu.svg" alt="simple docu logo" />
         <p>SimpleDocu</p>
-      </a>
-      <a className="sidebar-brand-mobile" href="/dashboard">
+      </Link>
+      <Link className="sidebar-brand-mobile" to="/dashboard">
         <img src="../../public/simpledocu.svg" alt="simple docu logo" />
         <p>SimpleDocu</p>
-      </a>
+      </Link>
       {location.pathname.split("/")[1] !== "login" &&
       location.pathname.split("/")[1] !== "signup" ? (
         <>
