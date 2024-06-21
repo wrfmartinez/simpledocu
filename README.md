@@ -32,7 +32,7 @@ You can copy your code snippets by clicking the `copy` button below each one
 
 ### Docs
 Documents are called Notes.  
-Top section will be your code snippets
+Top section will be your code snippets  
 Below that section will be your markdown notes.  
 > [!NOTE] 
 > The Title when creating your notes will not show up on this page. If you want your Notes to have a title please add it using markdown for example:
@@ -54,7 +54,7 @@ Automated code analysis to generate basic documentation that can then be adjuste
 - parameters
 - React components  
 
-## <div style="display: flex; align-items: center; gap: 3px;">Built w/ <img style="filter: invert(100%) sepia(18%) saturate(1%) hue-rotate(26deg) brightness(102%) contrast(101%);" src="./src/assets/images/heart.svg" alt="heart icon with a bolt inside" width="32px" /></div>
+## <p style="display: flex; align-items: center; gap: 3px;">Built w/ <img style="filter: invert(100%) sepia(18%) saturate(1%) hue-rotate(26deg) brightness(102%) contrast(101%);" src="./src/assets/images/heart.svg" alt="heart icon with a bolt inside" width="32px" /></p>
 React w/ Vite  
 NodeJS w/ Express  
 [documentsAPI](https://github.com/wrfmartinez/documents-api) created specifically for Simple Docu  
