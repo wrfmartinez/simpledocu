@@ -5,6 +5,8 @@ import { getDocument, updateDocument } from "../services/documentsAPI";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EditDocs: React.FC = () => {
+  const navigate = useNavigate();
+  // React Router hook that extracts the id parameter from the URL
   const { id } = useParams<{ id: any }>();
   const [title, setTitle] = useState("");
   const [codeSnippet, setCodeSnippet] = useState("");
@@ -12,11 +14,12 @@ const EditDocs: React.FC = () => {
   const [highlightedLines, setHighlightedLines] = useState<string[]>([]);
   const [text, setText] = useState("");
   const [isDone, setIsDone] = useState(false);
-  const navigate = useNavigate();
 
   const fetchDocumentData = async () => {
     try {
+      // Fetches the document data based on the id passed in
       const documentData = await getDocument(id);
+      // Sets the appopriate data for each state to pre-fill inputs with
       setTitle(documentData.title);
       setCodeSnippet(documentData.snippet || "");
       setCodeLanguage(documentData.codeLanguage || "");
@@ -58,14 +61,19 @@ const EditDocs: React.FC = () => {
       title: title,
       snippet: codeSnippet,
       codeLanguage: codeLanguage,
+      // original structure i.e [1:1,2:7]
+      // this will join the array as as a single string since the documentsAPI will add that into an array
+      // -> "1:1,2:7"
       highlightedLines: highlightedLines.join(","),
       text: text,
     };
+    const ONE_SECOND = 1000;
 
     try {
       await updateDocument(id, documentData);
       setIsDone(true);
-      setTimeout(() => navigate(`/dashboard/documents/${id}`), 1000); // Navigate to document after 1 second
+      // React Router hook function to navigate to another URL after updating
+      setTimeout(() => navigate(`/dashboard/documents/${id}`), ONE_SECOND);
     } catch (error) {
       console.error("Error updating document:", error);
     }

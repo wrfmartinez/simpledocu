@@ -12,6 +12,10 @@
   color: #000;
 }
 
+.doc-text:hover {
+  color: #000;
+}
+
 .card-doc {
   width: 100px;
   height: 130px;

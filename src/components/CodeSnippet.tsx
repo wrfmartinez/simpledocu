@@ -2,6 +2,7 @@ import { CodeBlock } from "react-code-block";
 import { useCopyToClipboard } from "react-use";
 import "../assets/css/CodeSnippet.css";
 
+// Define the structure of the code snippet object
 interface IProps {
   code: string;
   language: string;
@@ -9,12 +10,16 @@ interface IProps {
 }
 
 const CodeSnippet = ({ code, language, highlightedLine }: IProps) => {
+  // Hook provided by React Code Blocks to copy code to clipboard
   const [state, copyToClipboard] = useCopyToClipboard();
 
   const copyCode = () => {
     copyToClipboard(code);
   };
 
+  // Render the code block
+  // Code is based on documentation with little to no adjustment
+  // https://react-code-block.netlify.app/usage
   return (
     <aside className="code-snippet">
       <CodeBlock code={code} language={language} lines={[...highlightedLine]}>

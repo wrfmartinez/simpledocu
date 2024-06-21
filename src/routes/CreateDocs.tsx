@@ -13,10 +13,12 @@ const CreateDocs: React.FC = () => {
   const [isSaved, setIsSaved] = useState(false);
   const [notSaved, setNotSaved] = useState(false);
 
+  // EVENT HANDLERS
+  // Title input change
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value);
   };
-
+  // Code input change
   const handleCodeSnippetChange = (
     codeSnippet: string,
     codeLanguage: string,
@@ -26,12 +28,13 @@ const CreateDocs: React.FC = () => {
     setCodeLanguage(codeLanguage);
     setHighlightedLines(highlightedLines);
   };
-
+  // Text input change
   const handleTextChange = (newText: string) => {
     setText(newText);
   };
 
   const handleSubmit = async () => {
+    // Create variable w/ necessary data for documentsAPI to create a new document
     const documentData = {
       title: title,
       snippet: codeSnippet,
@@ -39,6 +42,7 @@ const CreateDocs: React.FC = () => {
       highlightedLines: highlightedLines,
       text: text,
     };
+    const THREE_SECONDS = 3000;
 
     try {
       await createDocument(documentData);
@@ -50,13 +54,13 @@ const CreateDocs: React.FC = () => {
       setText("");
       // Show success message
       setIsSaved(true);
-      setTimeout(() => setIsSaved(false), 3000); // Hide message after 3 seconds
+      // Hide message after 3 seconds
+      setTimeout(() => setIsSaved(false), THREE_SECONDS);
     } catch (error) {
-      // Handle error (e.g., show an error message)
       console.error("Error creating document:", error);
-      // Show success message
+      // Show unsuccessful message
       setNotSaved(true);
-      setTimeout(() => setNotSaved(false), 3000); // Hide message after 3 seconds
+      setTimeout(() => setNotSaved(false), THREE_SECONDS);
     }
   };
 
@@ -82,6 +86,7 @@ const CreateDocs: React.FC = () => {
         />
       </div>
       <button onClick={handleSubmit}>Save</button>
+      {/* Short circuit rendering. If either isSaved or notSaved is false the <p> will not render */}
       {isSaved && <p>Document saved successfully!</p>}
       {notSaved && <p>Sorry. Document could not be saved. Try again later.</p>}
     </section>

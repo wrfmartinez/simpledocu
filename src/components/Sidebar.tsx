@@ -4,7 +4,11 @@ import "../assets/css/Sidebar.css";
 
 const Sidebar = () => {
   // const { logout } = useAuth0();
+  // React Router hook to determine url location
   const location = useLocation();
+  // Compares current path of the application with path paramater passed in:
+  // If true then set className to "active"
+  // If not true then set className to an empty string
   const isActive = (path: string) => location.pathname === path;
 
   return (
@@ -17,6 +21,7 @@ const Sidebar = () => {
         <img src="../../public/simpledocu.svg" alt="simple docu logo" />
         <p>SimpleDocu</p>
       </Link>
+      {/* Check if pathname endpoint does is not login and signup, if it's not then render */}
       {location.pathname.split("/")[1] !== "login" &&
       location.pathname.split("/")[1] !== "signup" ? (
         <>

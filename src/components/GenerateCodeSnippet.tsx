@@ -25,18 +25,22 @@ const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({
     initialHighlightedLines
   );
 
+  // EVENT HANDLERS
+  // Code input change
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
     const newCode = e.target.value;
     setCode(newCode);
     onChange(newCode, language, highlightedLine);
   };
 
+  // Language select change
   const handleLanguageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const newLanguage = e.target.value;
     setLanguage(newLanguage);
     onChange(code, newLanguage, highlightedLine);
   };
 
+  // Highlighted lines input change
   const handleHighlightedLinesChange = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
@@ -47,9 +51,9 @@ const GenerateCodeSnippet: React.FC<GenerateCodeSnippetProps> = ({
   };
 
   useEffect(() => {
-    setCode(code);
-    setLanguage(language);
-    setHighlightedLine(highlightedLine);
+    setCode(initialCode);
+    setLanguage(initialLanguage);
+    setHighlightedLine(initialHighlightedLines);
   }, []);
 
   return (

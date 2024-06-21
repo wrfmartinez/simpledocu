@@ -19,18 +19,21 @@ import DashboardModules from "./components/DashboardModules";
 import EditDocs from "./routes/EditDocs";
 
 const router = createBrowserRouter(
+  // Creates a route config from JSX elements rather than objects (React Router converts them to objects under the hood)
   createRoutesFromElements(
     <>
       <Route path="/" element={<App />} />
       <Route path="login" element={<Login />} />
       <Route path="signup" element={<Signup />} />
       <Route path="dashboard" element={<Dashboard />}>
+      {/* index prop is the default child route in this case: /dashboard so it will render w/ the /dashboard route */}
         <Route index element={<DashboardModules />} />
         <Route path="create" element={<CreateDocs />} />
         <Route path="documents" element={<Documents />} />
         <Route path="documents/:id" element={<Document />} />
         <Route path="documents/:id/edit" element={<EditDocs />} />
       </Route>
+      {/* WILDCARD route for any URL path that hasn't been matched by other routes */}
       <Route path="*" element={<ErrorPage />} />
     </>
   )

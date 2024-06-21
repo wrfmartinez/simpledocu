@@ -38,16 +38,20 @@ const Document: React.FC = () => {
     fetchDocument(id);
   }, [id]);
 
+  // Redirect to document list if document is deleted
   if (isDeleted) {
     navigate("/dashboard/documents");
     return <div>Loading...</div>;
   }
 
+  // Render loading message if document is not yet fetched
   if (!document) {
     return <div>Loading...</div>;
   }
 
+  // Converts markdown text to HTML
   const markdownTextInHTML = md.render(document?.text);
+  // Sanitizes HTML prevents XSS attacks
   const clean = DOMPurify.sanitize(markdownTextInHTML);
 
   const handleDelete = async () => {
@@ -78,6 +82,7 @@ const Document: React.FC = () => {
         />
       }
       <div>
+        {/* Markdown rendered here as HTML. __html: clean is sanitizing the html before setting the innerHTML */}
         <div dangerouslySetInnerHTML={{ __html: clean }}></div>
       </div>
       <div className="btn-container">
