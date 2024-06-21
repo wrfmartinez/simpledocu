@@ -82,7 +82,6 @@ const Document: React.FC = () => {
         />
       }
       <div>
-        {/* Markdown rendered here as HTML. __html: clean is sanitizing the html before setting the innerHTML */}
         <div dangerouslySetInnerHTML={{ __html: clean }}></div>
       </div>
       <div className="btn-container">
